@@ -718,6 +718,7 @@ if shared.VapeExecuted then
 		discordbutton.Position = UDim2.new(1, -52, 0, 13)
 		discordbutton.Parent = windowtitle
 		discordbutton.MouseButton1Click:Connect(function()
+			--[[
 			spawn(function()
 				for i = 1, 14 do
 					spawn(function()
@@ -742,6 +743,7 @@ if shared.VapeExecuted then
 					end)
 				end
 			end)
+			]]
 			spawn(function()
 				local hover3textsize = game:GetService("TextService"):GetTextSize("Discord set to clipboard!", 16, Enum.Font.SourceSans, Vector2.new(99999, 99999))
 				local pos = game:GetService("UserInputService"):GetMouseLocation()
