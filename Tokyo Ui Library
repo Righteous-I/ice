@@ -609,7 +609,7 @@ function library:init()
         end
         self.UpdateThemeColors();
     end
-    warn("Section 1")
+
     function self:GetConfig(name)
         if isfile(self.cheatname..'/'..self.gamename..'/configs/'..name..self.fileext) then
             return readfile(self.cheatname..'/'..self.gamename..'/configs/'..name..self.fileext);
@@ -653,13 +653,13 @@ function library:init()
             self:SendNotification('Error loading config: '..tostring(e)..'. ('..tostring(name)..')', 5, c3new(1,0,0));
         end
     end
-    warn("Section 2")
+
     function self:SaveConfig(name)
         if not self:GetConfig(name) then
             self:SendNotification('Error saving config: Config does not exist. ('..tostring(name)..')', 5, c3new(1,0,0));
             return
         end
-        warn("S1")
+
         local s,e = pcall(function()
             local cfg = {};
             for flag,option in next, self.options do
@@ -684,28 +684,28 @@ function library:init()
             end
             writefile(self.cheatname..'/'..self.gamename..'/configs/'..name..self.fileext, http:JSONEncode(cfg));
         end)
-        warn("S2")
+
         if s then
             self:SendNotification('Successfully saved config: '..name, 5, c3new(0,1,0));
         else
             self:SendNotification('Error saving config: '..tostring(e)..'. ('..tostring(name)..')', 5, c3new(1,0,0));
         end
     end
-    warn("S3")
+
     for i,v in next, self.images do
         if not isfile(self.cheatname..'/assets/'..i..'.oh') then
             writefile(self.cheatname..'/assets/'..i..'.oh', game:HttpGet(v))
         end
         self.images[i] = readfile(self.cheatname..'/assets/'..i..'.oh');
     end
-    warn("S4")
+
     self.cursor1 = utility:Draw('Triangle', {Filled = true, Color = fromrgb(255,255,255), ZIndex = self.zindexOrder.cursor});
     self.cursor2 = utility:Draw('Triangle', {Filled = true, Color = fromrgb(85,85,85), ZIndex = self.zindexOrder.cursor-1});
-    warn("s5")
+
     local function updateCursor()
         self.cursor1.Visible = self.open
         self.cursor2.Visible = self.open
-        warn("s6")
+  
         if self.cursor1.Visible then
             local pos = inputservice:GetMouseLocation();
             self.cursor1.PointA = pos;
@@ -715,9 +715,9 @@ function library:init()
             self.cursor2.PointB = self.cursor1.PointB + newVector2(1, 1)
             self.cursor2.PointC = self.cursor1.PointC + newVector2(1, 1)
         end
-        warn("s7")
+
     end
-    warn("Section 3")
+
     utility:Connection(inputservice.InputBegan, function(input, gpe)
         if self.hasInit then
             if input.KeyCode == self.toggleKey and not library.opening and not gpe then
@@ -772,7 +772,7 @@ function library:init()
             end
         end
     end)
-    warn("Section 4")
+
     utility:Connection(inputservice.InputChanged, function(input, gpe)
         if input.UserInputType == Enum.UserInputType.MouseMovement then
             if library.open then
@@ -950,7 +950,7 @@ function library:init()
         end)
 
     end
-    warn("Section 5")
+
     function self:UpdateNotifications()
         local i = 0
         for v in next, self.notifications do
@@ -1154,7 +1154,7 @@ function library:init()
                 end
             end
         end
-        warn("Section 7")
+
         function indicator:SetEnabled(bool)
             if typeof(bool) == 'boolean' then
                 self.enabled = bool;
