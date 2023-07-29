@@ -609,7 +609,7 @@ function library:init()
         end
         self.UpdateThemeColors();
     end
-
+    warn("Section 1")
     function self:GetConfig(name)
         if isfile(self.cheatname..'/'..self.gamename..'/configs/'..name..self.fileext) then
             return readfile(self.cheatname..'/'..self.gamename..'/configs/'..name..self.fileext);
@@ -653,7 +653,7 @@ function library:init()
             self:SendNotification('Error loading config: '..tostring(e)..'. ('..tostring(name)..')', 5, c3new(1,0,0));
         end
     end
-
+    warn("Section 2")
     function self:SaveConfig(name)
         if not self:GetConfig(name) then
             self:SendNotification('Error saving config: Config does not exist. ('..tostring(name)..')', 5, c3new(1,0,0));
@@ -714,7 +714,7 @@ function library:init()
             self.cursor2.PointC = self.cursor1.PointC + newVector2(1, 1)
         end
     end
-
+    warn("Section 3")
     utility:Connection(inputservice.InputBegan, function(input, gpe)
         if self.hasInit then
             if input.KeyCode == self.toggleKey and not library.opening and not gpe then
@@ -769,7 +769,7 @@ function library:init()
             end
         end
     end)
-
+    warn("Section 4")
     utility:Connection(inputservice.InputChanged, function(input, gpe)
         if input.UserInputType == Enum.UserInputType.MouseMovement then
             if library.open then
@@ -947,7 +947,7 @@ function library:init()
         end)
 
     end
-
+    warn("Section 5")
     function self:UpdateNotifications()
         local i = 0
         for v in next, self.notifications do
@@ -1151,7 +1151,7 @@ function library:init()
                 end
             end
         end
-
+        warn("Section 7")
         function indicator:SetEnabled(bool)
             if typeof(bool) == 'boolean' then
                 self.enabled = bool;
