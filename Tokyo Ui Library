@@ -659,7 +659,7 @@ function library:init()
             self:SendNotification('Error saving config: Config does not exist. ('..tostring(name)..')', 5, c3new(1,0,0));
             return
         end
-
+        warn("S1")
         local s,e = pcall(function()
             local cfg = {};
             for flag,option in next, self.options do
@@ -684,21 +684,21 @@ function library:init()
             end
             writefile(self.cheatname..'/'..self.gamename..'/configs/'..name..self.fileext, http:JSONEncode(cfg));
         end)
-
+        warn("S2")
         if s then
             self:SendNotification('Successfully saved config: '..name, 5, c3new(0,1,0));
         else
             self:SendNotification('Error saving config: '..tostring(e)..'. ('..tostring(name)..')', 5, c3new(1,0,0));
         end
     end
-
+    warn("S3")
     for i,v in next, self.images do
         if not isfile(self.cheatname..'/assets/'..i..'.oh') then
             writefile(self.cheatname..'/assets/'..i..'.oh', game:HttpGet(v))
         end
         self.images[i] = readfile(self.cheatname..'/assets/'..i..'.oh');
     end
-
+    warn("S4")
     self.cursor1 = utility:Draw('Triangle', {Filled = true, Color = fromrgb(255,255,255), ZIndex = self.zindexOrder.cursor});
     self.cursor2 = utility:Draw('Triangle', {Filled = true, Color = fromrgb(85,85,85), self.zindexOrder.cursor-1});
     local function updateCursor()
