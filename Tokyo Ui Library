@@ -701,9 +701,11 @@ function library:init()
     warn("S4")
     self.cursor1 = utility:Draw('Triangle', {Filled = true, Color = fromrgb(255,255,255), ZIndex = self.zindexOrder.cursor});
     self.cursor2 = utility:Draw('Triangle', {Filled = true, Color = fromrgb(85,85,85), self.zindexOrder.cursor-1});
+    warn("s5")
     local function updateCursor()
         self.cursor1.Visible = self.open
         self.cursor2.Visible = self.open
+        warn("s6")
         if self.cursor1.Visible then
             local pos = inputservice:GetMouseLocation();
             self.cursor1.PointA = pos;
@@ -713,6 +715,7 @@ function library:init()
             self.cursor2.PointB = self.cursor1.PointB + newVector2(1, 1)
             self.cursor2.PointC = self.cursor1.PointC + newVector2(1, 1)
         end
+        warn("s7")
     end
     warn("Section 3")
     utility:Connection(inputservice.InputBegan, function(input, gpe)
