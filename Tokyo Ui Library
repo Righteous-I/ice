@@ -1424,7 +1424,7 @@ function library:init()
                     ZIndex = z+4;
                     Parent = objs.mainColor;
                 })
-
+                warn("TTTT")
                 objs.colorBorder = utility:Draw('Square', {
                     Size = newUDim2(1,2,1,2);
                     Position = newUDim2(0,-1,0,-1);
